@@ -1,14 +1,31 @@
+edges = list()
+
 def checkNoEdges(graph):
     for i in graph:
         if len(graph[i]) > 0:
-            return false
-    return true
+            return False
+    return True
 
 def numberOfEdges(graph):
     sum = 0
     for i in graph:
         sum = sum + len(graph[i])
     return sum/2
+
+def removeVertex(graph, vertex):
+    for i in graph:
+        if i == vertex:
+            toBeremoved = i
+        else:
+            for j in graph[i]:
+                if j == vertex:
+                    graph[i].remove(j)
+    del graph[toBeremoved]
+    for i in edges:
+        if (i[0] == vertex) or (i[1] == vertex):
+            edges.remove[i]
+    print edges
+    return graph
 
 def vertexCover(graph, k):
     if checkNoEdges(graph):
@@ -17,7 +34,6 @@ def vertexCover(graph, k):
         return false
 
 graph = dict()
-edges = list()
 e = int(raw_input())
 for i in range(e):
     a, b = map(int, raw_input().split(" "))
@@ -36,6 +52,11 @@ for i in range(e):
         
 k = int(raw_input())
 
-# print len(edges)
-# print vertexCover(graph, k)
+# print checkNoEdges(graph)
+# print numberOfEdges(graph)
+print graph
+print edges
+print removeVertex(graph, 3)
+print edges
+# print vertexCover(removeVertex(graph, 3), k)
 # print numberOfEdges(graph)
