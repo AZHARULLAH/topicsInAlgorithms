@@ -13,6 +13,8 @@ def numberOfEdges(graph):
     return sum/2
 
 def removeVertex(graph, vertex):
+    # removing vertices in graph list
+    toBeremoved = -1
     for i in graph:
         if i == vertex:
             toBeremoved = i
@@ -20,18 +22,35 @@ def removeVertex(graph, vertex):
             for j in graph[i]:
                 if j == vertex:
                     graph[i].remove(j)
-    del graph[toBeremoved]
-    for i in edges:
-        if (i[0] == vertex) or (i[1] == vertex):
-            edges.remove[i]
-    print edges
+    if toBeremoved != -1:
+        del graph[toBeremoved]
+    # removing edges in edges list
+    global edges
+    tempEdges = list()
+    for i in range(len(edges)):
+        # print "checking (" + str(edges[i][0]) + ", " + str(edges[i][1]) + ")"
+        if (edges[i][0] == vertex) or (edges[i][1] == vertex):
+            continue
+        else:
+            tempEdges.append([edges[i][0], edges[i][1]]) 
+    edges = tempEdges
     return graph
 
 def vertexCover(graph, k):
     if checkNoEdges(graph):
-        return true
-    if numberOfEdges(graph) >= (k * len(graph)):
-        return false
+        print "There are no edges in the graph, returning true!"
+        return True
+    elif numberOfEdges(graph) >= (k * len(graph)):
+        print "Number of edges = " + str(numberOfEdges(graph)) + " more than k*len(graph) = " + str(k * len(graph)) + " in the graph, returning false!"
+        return False
+    else:
+        randomEdge = edges[0]
+        # print "selected " + str(randomEdge)
+        print "calling graph - " + str(randomEdge[0]) + " and k = " + str(k-1)  
+        subGraph1 = vertexCover(removeVertex(graph, randomEdge[0]), k-1)
+        print "calling graph - " + str(randomEdge[0]) + " and k = " + str(k-1) 
+        subGraph2 = vertexCover(removeVertex(graph, randomEdge[1]), k-1)
+        return subGraph1 or subGraph2
 
 graph = dict()
 e = int(raw_input())
@@ -54,9 +73,9 @@ k = int(raw_input())
 
 # print checkNoEdges(graph)
 # print numberOfEdges(graph)
-print graph
-print edges
-print removeVertex(graph, 3)
-print edges
-# print vertexCover(removeVertex(graph, 3), k)
+# print graph
+# print edges
+# print removeVertex(graph, 3)
+# print edges
+print vertexCover(graph, k)
 # print numberOfEdges(graph)
