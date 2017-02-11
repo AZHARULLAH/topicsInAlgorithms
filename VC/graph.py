@@ -23,6 +23,7 @@ def removeVertex(graph, vertex):
                 if j == vertex:
                     graph[i].remove(j)
     if toBeremoved != -1:
+        print "Removing " + str(toBeremoved) + " from the graph"
         del graph[toBeremoved]
     # removing edges in edges list
     global edges
@@ -30,6 +31,7 @@ def removeVertex(graph, vertex):
     for i in range(len(edges)):
         # print "checking (" + str(edges[i][0]) + ", " + str(edges[i][1]) + ")"
         if (edges[i][0] == vertex) or (edges[i][1] == vertex):
+            print "Removing " + str(edges[i][0]) + ", " + str(edges[i][1]) + " from the edges list"
             continue
         else:
             tempEdges.append([edges[i][0], edges[i][1]]) 
