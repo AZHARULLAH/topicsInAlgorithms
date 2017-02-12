@@ -42,12 +42,14 @@ def vertexCover(graph, k):
     if checkNoEdges(graph):
         print "There are no edges in the graph, returning true!"
         return True
-    elif numberOfEdges(graph) >= (k * len(graph)):
+    if numberOfEdges(graph) >= (k * len(graph)):
+        print "There are more than 0 edges in the graph"
         print "Number of edges = " + str(numberOfEdges(graph)) + " more than k*len(graph) = " + str(k * len(graph)) + " in the graph, returning false!"
         return False
     else:
+        print "There are more than 0 edges in the graph and Number of edges = " + str(numberOfEdges(graph)) + " not more than k*len(graph) = " + str(k * len(graph)) + " in the graph"
         randomEdge = edges[0]
-        # print "selected " + str(randomEdge)
+        print "selected " + str(randomEdge) + " randomly for proceeding!"
         print "calling graph - " + str(randomEdge[0]) + " and k = " + str(k-1)  
         subGraph1 = vertexCover(removeVertex(graph, randomEdge[0]), k-1)
         print "calling graph - " + str(randomEdge[0]) + " and k = " + str(k-1) 
