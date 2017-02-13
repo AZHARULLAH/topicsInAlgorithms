@@ -17,14 +17,16 @@ def numberOfEdges(graph):
         sum = sum + len(graph[i])
     return sum/2
 
-def removeVertex(graph, vertices):
+def removeVertex(graph, verticeslist):
 	# print vertices
-	for vertex in vertices:
-		print vertex
+	removedVertices = list()
+	for vertex in verticeslist:
+		# print vertex
 		# removing vertices in graph list
 		for i in graph:
 			if i == vertex:
-				print "removed " + str(i) + " from graph"
+				# print "removed " + str(i) + " from graph"
+				removedVertices.append(i)
 				del graph[i]
 				break
 		for i in graph:
@@ -41,8 +43,15 @@ def removeVertex(graph, vertices):
 			else:
 				tempEdges.append([edges[i][0], edges[i][1]]) 
 		edges = tempEdges
-		# removing vertice in list
-		# vertices.remove(vertex)
+	global vertices
+	# removing vertice in list
+	tempVertices = list(set(vertices) - set(removedVertices)) 
+	# print vertices
+	# print removedVertices
+	# print "&&&"
+	# print tempVertices
+	vertices = tempVertices
+	# print vertices
 	return graph
 
 def checkIfVertexCover(lst, edges):
@@ -58,30 +67,35 @@ def checkIfVertexCover(lst, edges):
         return False
 
 def reduceGraph(graph, k):
-	print graph, k
-	if checkNoEdges(graph):
-        # print "There are no edges in the graph, returning true!"
-		return graph
-	if numberOfEdges(graph) >= (k * len(graph)):
-        # print "There are more than 0 edges in the graph"
-        # print "Number of edges = " + str(numberOfEdges(graph)) + " more than k*len(graph) = " + str(k * len(graph)) + " in the graph, returning false!"
-		return graph
+	# print graph, k
 	duplicateGraph = graph
+	# print duplicateGraph
+	if k == 0:
+		print "False, vertex cover does not exists"
+	if checkNoEdges(graph):
+		print "True, vertex cover exists"
+	if numberOfEdges(graph) >= (k * len(graph)):
+		print "False, vertex cover does not exists"
+	
 	for i in duplicateGraph:
 		if len(duplicateGraph[i]) == 0:
+			# print "case 1"
 			tempList = list()
 			tempList.append(i)
 			return reduceGraph(removeVertex(graph, tempList), k)
 		elif len(duplicateGraph[i]) > k:
+			# print "case 2"
 			tempList = list()
 			tempList.append(i)
 			return reduceGraph(removeVertex(graph, tempList), k-1)
 		elif len(duplicateGraph[i]) == 1:
+			# print "case 3"
 			tempList = list()
 			tempList.append(i)
 			tempList.append(graph[i][0])
 			return reduceGraph(removeVertex(graph, tempList), k-1)
-	return graph
+	# return graph
+	vertexCover(graph, k)
 
 def vertexCover(graph, k):
 	start_time = time.time()
@@ -136,6 +150,6 @@ for line in lines:
 # print vertices
 # print edges
 
-reduceGraph(graph, k)
+# reduceGraph(graph, k)
 
-# print removeVertex(graph, [1, 2])
+print removeVertex(graph, [1, 2])

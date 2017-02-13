@@ -64,6 +64,7 @@ for i in allPossibleKCombinations:
     if checkIfVertexCover(i, edges) == True:
         flag = 1
         print "True, Vertex cover of size " + str(k) + " is " + str(i)
+        break
 if flag == 0:
     print "False. vertex cover of size " + str(k) + " doesn't exist"
 
