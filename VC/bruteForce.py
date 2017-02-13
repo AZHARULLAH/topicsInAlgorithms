@@ -1,5 +1,6 @@
 import sys
 import itertools
+import time
 
 edges = list()
 vertices = list()
@@ -55,6 +56,8 @@ for line in lines:
 				vertices.append(b)
 	lineNum = lineNum + 1
 
+start_time = time.time()
+
 allPossibleKCombinations = list(itertools.combinations(vertices, k))
 flag = 0
 for i in allPossibleKCombinations:
@@ -63,6 +66,8 @@ for i in allPossibleKCombinations:
         print "True, Vertex cover of size " + str(k) + " is " + str(i)
 if flag == 0:
     print "False. vertex cover of size " + str(k) + " doesn't exist"
+
+print("\nThe main program ran in %s seconds..." % (time.time() - start_time))
 
 # print int(k[0])
 # print graph
