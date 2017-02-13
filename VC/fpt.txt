@@ -41,13 +41,13 @@ Functions:
 
 	output: True / False
 
-5) vertexCover:
+5) reduceGraph:
 
 	input: a graph (a dictionary of lists) and an integer k (VC parameter)
 
 	computation: This function applies the rules of kerneliztion and removes all appropriate vertices to produce the kernel instance of the original graph. Then it passes the kernel of the graph and the resultant value of k to the function vertexCover.
 
-6) checkIfVertexCover:
+6) vertexCover:
 
 	input: a list of vertices (lst) and the edge list (edges)
 
@@ -61,4 +61,4 @@ Functions:
 
 	It then calls the reduceGraph function on the input graph and paramter k that returns True if the graph has a vertex cover of size K.
 
-To execute the program: python bruteForce.py 'input.txt' > 'output.txt'
+To execute the program: python fpt.py 'input.txt' > 'output.txt'

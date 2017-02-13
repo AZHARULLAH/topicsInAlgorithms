@@ -1,7 +1,6 @@
 import sys
 import numpy as np
 import random
-import os
 
 numOfvertices = random.randint(100, 200)
 k = random.randint(1, 20)
@@ -13,7 +12,6 @@ for i in range(numOfvertices):
 		if i == j:
 			adjacencyMatrix[i][j] = 0
 		# print "Copying " + str(j) + str(i) + " to " + str(i) + str(j)
-
 print "Copying done"
 
 fileName = str(sys.argv[1])
