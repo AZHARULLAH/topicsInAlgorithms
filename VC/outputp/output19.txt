@@ -1,0 +1,3 @@
+No VC of size 9 exists on the graph.
+
+The main program ran in 0.000295877456665 seconds...
