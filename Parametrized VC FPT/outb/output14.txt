@@ -1,0 +1,3 @@
+False. vertex cover of size 12 doesn't exist
+
+The main program ran in 3.34609913826 seconds...

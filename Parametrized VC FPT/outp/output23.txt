@@ -1,0 +1,3 @@
+No VC of size 18 exists on the graph.
+
+The main program ran in 0.000980138778687 seconds...

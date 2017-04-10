@@ -1,0 +1,3 @@
+No VC of size 17 exists on the graph.
+
+The main program ran in 0.000726938247681 seconds...

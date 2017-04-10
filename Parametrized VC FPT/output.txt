@@ -1,0 +1,3 @@
+Graph has a VC of size 3
+
+The main program ran in 7.70092010498e-05 seconds...

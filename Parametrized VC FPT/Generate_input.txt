@@ -1,0 +1,20 @@
+Input generating program:
+
+The Program to generate a random graph of 2500 vertices is in python. 
+
+The program uses 3 external libraries for computations:
+1) sys for standard input reading from and writing into a file
+2) numpy for making use of functions in the library helpful for large matrix computations
+3) random for performing random operations on the adjacency matrix and choosing numbers
+
+Functions:
+
+1) Main function:
+
+	The program accepts the output file name as a command line input. It then writes through the file line by line as and when the required parameter 'k' and the edges in the graph are generated.
+
+	It first randomly chooses a value on k and number of vertices based on the upper and lower bounds of each value provided as parameters to the function. THen, it creates a 2D matrix (adjacencyMatrix) of nxn size and randomly assigns a value of 1 (there is an edge from i->j) or 0 (no edge). Then, the upper triangular matrix is copied to the lower triangular matrix (because it is an undirected graph) and now the adjacency matrix is ready. 
+
+	It writes the value of k into the output file. Then it traverses the matrix and finds all the edges and also single vertices and writes them line by line into the file (The probability of having single vertices is very low for obvious reasons)
+
+To execute the program: python bruteForce.py 'input.txt'
